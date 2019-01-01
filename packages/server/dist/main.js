@@ -16,5 +16,5 @@ function bootstrap() {
         yield app.listen(4000);
     });
 }
-bootstrap();
+setTimeout(() => __awaiter(this, void 0, void 0, function* () { return yield bootstrap(); }), 5000);
 //# sourceMappingURL=main.js.map

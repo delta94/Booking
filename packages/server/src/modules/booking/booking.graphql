@@ -1,0 +1,22 @@
+type Query {
+    bookings: [Booking!]
+    booking(id: ID!): Booking!
+}
+
+type Mutation {
+    createBooking(input: BookingInput!): Booking!
+}
+
+type Booking {
+    id: ID!
+    userId: ID!
+    type: String!
+    startDate: String!
+    endDate: String!
+}
+
+input BookingInput {
+    type: String!
+    startDate: String!
+    endDate: String!
+}

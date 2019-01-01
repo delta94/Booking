@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core'
+
 import { AppModule } from './app.module'
 
 async function bootstrap() {
@@ -6,4 +7,4 @@ async function bootstrap() {
     await app.listen(4000)
 }
 
-setTimeout(async () => await bootstrap(), 10000)
+setTimeout(async () => await bootstrap(), 5000)

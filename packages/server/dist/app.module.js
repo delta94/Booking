@@ -7,12 +7,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const hello_module_1 = require("./modules/hello/hello.module");
+const typeorm_1 = require("@nestjs/typeorm");
+const graphql_1 = require("@nestjs/graphql");
+const path_1 = require("path");
+const user_module_1 = require("./modules/user/user.module");
+const auth_module_1 = require("./modules/auth/auth.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [hello_module_1.HelloModule]
+        imports: [
+            auth_module_1.AuthModule,
+            user_module_1.UserModule,
+            typeorm_1.TypeOrmModule.forRoot({
+                type: 'postgres',
+                host: 'db',
+                port: 5432,
+                username: 'root',
+                password: 'root',
+                database: 'booking',
+                entities: [__dirname + '/**/*.entity{.ts,.js}'],
+                synchronize: true
+            }),
+            graphql_1.GraphQLModule.forRoot({
+                context: ({ req }) => ({ req }),
+                typePaths: ['./**/*.graphql'],
+                definitions: {
+                    path: path_1.join(process.cwd(), 'src/graphql.schema.ts'),
+                    outputAs: 'class'
+                },
+                path: '/'
+            })
+        ]
     })
 ], AppModule);
 exports.AppModule = AppModule;
