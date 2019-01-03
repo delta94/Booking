@@ -1,18 +1,20 @@
 type Query {
     bookings: [Booking!]
-    booking(id: ID!): Booking!
+    booking(id: Int!): Booking!
 }
 
 type Mutation {
-    createBooking(input: BookingInput!): Booking!
+    createBooking(input: BookingInput!): Boolean!
+    deleteBooking(id: Int!): Boolean!
 }
 
 type Booking {
-    id: ID!
-    userId: ID!
+    id: Int!
+    userId: Int!
     type: String!
     startDate: String!
     endDate: String!
+    user: User!
 }
 
 input BookingInput {

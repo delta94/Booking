@@ -1,4 +1,4 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, ManyToOne } from 'typeorm'
 
 import { User } from '../user/user.entity'
 
@@ -7,18 +7,17 @@ export class Booking extends BaseEntity {
     @PrimaryGeneratedColumn() id: number
 
     @Column()
-    userId: number
-
-    @Column()
     type: string
 
     @Column()
-    startDate: Date
+    startDate: string
 
     @Column()
-    endDate: Date
+    endDate: string
 
-    @OneToOne(() => User)
-    @JoinColumn()
+    @Column({ unique: false })
+    userId: number
+
+    @ManyToOne(() => User, user => user.bookings)
     user: User
 }

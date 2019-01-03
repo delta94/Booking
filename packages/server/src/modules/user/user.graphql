@@ -10,6 +10,7 @@ type Mutation {
 type User {
     id: Int!
     email: String!
+    bookings: [Booking!]
 }
 
 type RegisterResponse {

@@ -25,4 +25,9 @@ export class BookingResolver {
     create(@Args('input') input: BookingDto, @Usr() user) {
         return this.bookingService.create(input, user)
     }
+
+    @Mutation('deleteBooking')
+    delete(@Args('id') id: number) {
+        return this.bookingService.delete(id)
+    }
 }

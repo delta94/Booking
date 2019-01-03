@@ -11,11 +11,12 @@ export class UserDataInput {
 }
 
 export class Booking {
-    id: string;
-    userId: string;
+    id: number;
+    userId: number;
     type: string;
     startDate: string;
     endDate: string;
+    user: User;
 }
 
 export class LoginResponse {
@@ -24,7 +25,9 @@ export class LoginResponse {
 }
 
 export abstract class IMutation {
-    abstract createBooking(input: BookingInput): Booking | Promise<Booking>;
+    abstract createBooking(input: BookingInput): boolean | Promise<boolean>;
+
+    abstract deleteBooking(id: number): boolean | Promise<boolean>;
 
     abstract register(input: UserDataInput): RegisterResponse | Promise<RegisterResponse>;
 
@@ -34,7 +37,7 @@ export abstract class IMutation {
 export abstract class IQuery {
     abstract bookings(): Booking[] | Promise<Booking[]>;
 
-    abstract booking(id: string): Booking | Promise<Booking>;
+    abstract booking(id: number): Booking | Promise<Booking>;
 
     abstract me(): User | Promise<User>;
 
@@ -48,4 +51,5 @@ export class RegisterResponse {
 export class User {
     id: number;
     email: string;
+    bookings: Booking[];
 }
