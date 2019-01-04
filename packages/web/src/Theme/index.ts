@@ -10,11 +10,17 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Montserrat', sans-serif;
         box-sizing: border-box;
     }
+
     div {
         box-sizing: border-box;
     }
+    
     p {
         margin: 0;
+    }
+
+    input {
+        font-family: 'Montserrat', sans-serif;
     }
 `
 interface Theme {
