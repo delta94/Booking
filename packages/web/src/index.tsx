@@ -1,18 +1,22 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { ThemeProvider } from 'styled-components'
+import { ApolloProvider } from 'react-apollo'
 
 import { Routes } from './Routes'
 import { theme, GlobalStyle } from './Theme'
+import { client } from './apollo'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
-    <ThemeProvider theme={theme}>
-        <>
-            <GlobalStyle />
-            <Routes />
-        </>
-    </ThemeProvider>,
+    <ApolloProvider client={client}>
+        <ThemeProvider theme={theme}>
+            <>
+                <GlobalStyle />
+                <Routes />
+            </>
+        </ThemeProvider>
+    </ApolloProvider>,
     document.getElementById('root')
 )
 

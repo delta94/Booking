@@ -6,7 +6,7 @@ import { Layout, Left, Right } from './style'
 export const LoginPage = () => (
     <Layout>
         <Left>
-            <LoginForm submit={(email: any, password: any) => console.log(email, password)} />
+            <LoginForm />
         </Left>
 
         <Right>
